@@ -1,4 +1,4 @@
-package test.t01.sample02;
+package test.t01.common;
 
 public class Tv {
 

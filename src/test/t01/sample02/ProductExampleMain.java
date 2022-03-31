@@ -1,5 +1,7 @@
 package test.t01.sample02;
 
+import test.t01.common.Car;
+
 public class ProductExampleMain {
     public static void main(String[] args) {
         Product<Car, String> product1 = new Product<>();
