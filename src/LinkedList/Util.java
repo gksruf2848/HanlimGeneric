@@ -2,12 +2,12 @@ package LinkedList;
 
 public class Util {
 
-    //Make-Set(data)
+    //////////Make-Set(data)
     public static <T> Node<T> makeSet(T data) {
         return new Node<>(data);
     }
 
-    //Find-Set(node) : node가 속한 대장 head를 알아냅니다.
+    //////////Find-Set(node) : node가 속한 대장 head를 알아냅니다.
     public static <T> Node<T> findSet(Node<T> node) {
         return node.headNode; //그냥 모든 노드에는 대장 head에 대한 정보가 headNode에 담겨 있으므로 그것을 리턴합니다.
 
@@ -20,11 +20,11 @@ public class Util {
 
     }
 
-    //Union(X, Y) : node X가 속한 집합과, Y가 속한 집합을 합칩니다.
+    //////////Union(X, Y) : node X가 속한 집합과, Y가 속한 집합을 합칩니다.
     public static <T> void union(Node<T> n1, Node<T> n2) {
         if(findSet(n1) != findSet(n2)) {            //n1의 대장 head와 n2의 대장 head가 같지 않을 경우, 서로 다른 집합이라는 의미이므로 알고리즘을 수행합니다.
+            findTail(n1).nextNode = n2.headNode;    //n1 집합의 꼬리를 찾아(null값) 그 위치에 n2의 headNode로 채워줍니다.
             changeHead(n1.headNode, n2.headNode);   //n2 집합의 모든 원소의 headNode를 n1의 headNode로 바꿉니다.
-            findTail(n1).nextNode = findSet(n2);    //n1 집합의 꼬리를 찾아(null값) 그 위치에 n2의 headNode로 채워줍니다.
         }
     }
 
@@ -42,6 +42,16 @@ public class Util {
             return node;
         }
         else return findTail(node.nextNode);
+    }
+
+    //입력한 노드부터 꼬리까지 연결된 모든 데이터를 출력하는 함수, 꼬리까지 모두 출력했다면 "이상 끝"을 출력
+    public static <T> void putNode(Node<T> node) {
+        System.out.println(node.data);
+        if(node.nextNode == null) {
+            System.out.println("이상 끝");
+            return;
+        }
+        else putNode(node.nextNode);
     }
 
 }
