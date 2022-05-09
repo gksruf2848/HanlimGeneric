@@ -8,4 +8,8 @@ public class Person {
 
     public String getName() { return this.name; }
 
+    public String toString() {
+        return String.format("[Person:%s]", this.name);
+    }
+
 }
