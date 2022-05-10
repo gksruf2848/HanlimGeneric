@@ -17,7 +17,6 @@ public class Util {
         }
         else return findSet(node.headNode);
         */
-
     }
 
     //////////Union(X, Y) : node X가 속한 집합과, Y가 속한 집합을 합칩니다.
@@ -27,6 +26,7 @@ public class Util {
             changeHead(n1.headNode, n2.headNode);   //n2 집합의 모든 원소의 headNode를 n1의 headNode로 바꿉니다.
         }
     }
+
 
     //node의 모든 headNode를 head로 바꿔주는 함수
     public static <T> void changeHead(Node<T> head, Node<T> node) {
@@ -44,7 +44,8 @@ public class Util {
         else return findTail(node.nextNode);
     }
 
-    //입력한 노드부터 꼬리까지 연결된 모든 데이터를 출력하는 함수, 꼬리까지 모두 출력했다면 "이상 끝"을 출력
+    //해당 노드부터 꼬리까지 연결된 모든 데이터를 출력하는 함수, 꼬리까지 모두 출력했다면 "이상 끝"을 출력
+    //처음부터의 전체 집합을 출력하고자 할때는 putNode(findSet(node))와 같이 노드의 헤드를 넣어 주어야 합니다.
     public static <T> void putNode(Node<T> node) {
         System.out.println(node.data);
         if(node.nextNode == null) {
